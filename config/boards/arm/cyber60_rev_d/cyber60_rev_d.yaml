@@ -1,5 +1,5 @@
 identifier: cyber60_rev_d
-name: Cyber60 Rev D
+name: FuuKB
 type: mcu
 arch: arm
 toolchain:
