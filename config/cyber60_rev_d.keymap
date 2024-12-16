@@ -16,15 +16,29 @@
             require-prior-idle-ms = <125>;
             bindings = <&lt>, <&kp>;
         };
+    };
 
-        bt_mod: bt_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <1000>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <125>;
-            bindings = <&bt>, <&bt>;
+    combos {
+        compatible = "zmk,combos";
+
+        reset_to_bootloader {
+            bindings = <&bootloader>;
+            key-positions = <56 29 62 61 60>;
+        };
+
+        bt_select_0 {
+            bindings = <&bt BT_SEL 0>;
+            key-positions = <56 29 1>;
+        };
+
+        bt_select_1 {
+            bindings = <&bt BT_SEL 1>;
+            key-positions = <56 29 2>;
+        };
+
+        bt_clear {
+            bindings = <&bt BT_CLR>;
+            key-positions = <29 14 56>;
         };
     };
 
@@ -64,11 +78,11 @@
             // | Rotary | (<-- Rotary switch) ----------------------------------------------------------- 
 
             bindings = <
-&kp GRAVE              &kp F1    &kp F2           &kp F3           &kp F4           &kp F5           &kp F6           &kp F7           &kp F8           &kp F9     &kp F10  &kp F11  &kp F12  &trans  &trans
-&bt_mod BT_CLR BT_NXT  &trans    &kp UP           &trans           &trans           &trans           &trans           &trans           &trans           &trans     &trans   &trans   &trans   &trans
-&bootloader            &kp LEFT  &kp DOWN         &kp RIGHT        &trans           &trans           &kp LEFT         &kp UP           &kp DOWN         &kp RIGHT  &trans   &trans   &trans   &trans
-&trans                 &trans    &rgb_ug RGB_TOG  &rgb_ug RGB_BRI  &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &trans     &trans   &trans   &trans   &trans
-&trans                 &trans    &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans
+&kp GRAVE  &kp F1    &kp F2           &kp F3           &kp F4           &kp F5           &kp F6           &kp F7           &kp F8           &kp F9     &kp F10  &kp F11  &kp F12  &trans  &trans
+&trans     &trans    &kp UP           &trans           &trans           &trans           &trans           &trans           &trans           &trans     &trans   &trans   &trans   &trans
+&trans     &kp LEFT  &kp DOWN         &kp RIGHT        &trans           &trans           &kp LEFT         &kp UP           &kp DOWN         &kp RIGHT  &trans   &trans   &trans   &trans
+&trans     &trans    &rgb_ug RGB_TOG  &rgb_ug RGB_BRI  &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &trans     &trans   &trans   &trans   &trans
+&trans     &trans    &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans
 &kp C_PP
             >;
 
