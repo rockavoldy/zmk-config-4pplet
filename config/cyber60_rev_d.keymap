@@ -9,19 +9,21 @@
     behaviors {
         kp_layer: kp_layer {
             compatible = "zmk,behavior-hold-tap";
-            label = "KP_LAYER";
-            bindings = <&lt>, <&kp>;
-
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+            bindings = <&lt>, <&kp>;
         };
 
         bt_mod: bt_mod {
             compatible = "zmk,behavior-hold-tap";
-            label = "BT_MOD";
             #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <1000>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
             bindings = <&bt>, <&bt>;
         };
     };
