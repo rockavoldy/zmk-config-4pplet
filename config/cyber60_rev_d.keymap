@@ -25,18 +25,6 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_LGUI|MOD_RSFT|MOD_RGUI)>;
         };
-
-        hw_soft_off: hw_soft_off {
-            compatible = "zmk,behavior-soft-off";
-            #binding-cells = <0>;
-            hold-time-ms = <5000>;
-        };
-    };
-
-    soft_off_behavior_key {
-        compatible = "zmk,gpio-key-behavior-trigger";
-        bindings = <&hw_soft_off>;
-        key = <&wakeup_key>;
     };
 
     keymap {
@@ -103,7 +91,7 @@
 &trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans
 &trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans
 &trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &hw_soft_off
+&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans
             >;
         };

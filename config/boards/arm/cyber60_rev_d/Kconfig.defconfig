@@ -4,7 +4,7 @@
 if BOARD_CYBER60_REV_D
 
 config ZMK_KEYBOARD_NAME
-	default "FuuKB"
+	default "cyber60 Rev D"
 
 if USB
 

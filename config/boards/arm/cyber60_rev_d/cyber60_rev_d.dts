@@ -46,13 +46,6 @@
         //resolution = <2>;
     };
 
-    wakeup_source: wakeup_source {
-        compatible = "zmk,gpio-key-wakeup-trigger";
-
-        trigger = <&wakeup_key>;
-        wakeup-source;
-    };
-
 	// PWM buzzer config
     buzzer: pwm_buzzer {
         compatible = "pwm-buzzer";
@@ -111,8 +104,8 @@
 	kscan0: kscan {
 		compatible = "zmk,kscan-gpio-matrix";
 		label = "KSCAN";
+
 		diode-direction = "col2row";
-		wakeup-source;
 		row-gpios
 			= <&gpio0 28  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 			, <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -135,15 +128,6 @@
 			, <&gpio1 2 GPIO_ACTIVE_HIGH>
 			;
 	};
-
-	
-};
-
-/ {
-    soft_off_wakers {
-        compatible = "zmk,soft-off-wakeup-sources";
-        wakeup-sources = <&wakeup_source>;
-    };
 };
 
 &gpio0 {
