@@ -5,8 +5,6 @@
 
 #define FN1 1
 
-&gresc { mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>; };
-
 / {
     behaviors {
         kp_layer: kp_layer {
@@ -27,9 +25,19 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_LGUI|MOD_RSFT|MOD_RGUI)>;
         };
+
+        hw_soft_off: hw_soft_off {
+            compatible = "zmk,behavior-soft-off";
+            #binding-cells = <0>;
+            hold-time-ms = <5000>;
+        };
     };
 
-    combos { compatible = "zmk,combos"; };
+    soft_off_behavior_key {
+        compatible = "zmk,gpio-key-behavior-trigger";
+        bindings = <&hw_soft_off>;
+        key = <&wakeup_key>;
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -91,11 +99,11 @@
 
         utility_layer {
             bindings = <
-&bootloader  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bootloader  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans  &bt BT_CLR
+&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans
+&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans
+&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans  &trans
+&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &hw_soft_off
 &trans
             >;
         };
