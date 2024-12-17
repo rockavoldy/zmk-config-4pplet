@@ -10,7 +10,7 @@
         kp_layer: kp_layer {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "tap-unless-interrupted";
             tapping-term-ms = <200>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <125>;
@@ -65,7 +65,7 @@
             bindings = <
 &kp GRAVE  &kp F1    &kp F2           &kp F3           &kp F4           &kp F5           &kp F6           &kp F7           &kp F8           &kp F9     &kp F10  &kp F11  &kp F12  &trans  &trans
 &trans     &trans    &kp UP           &trans           &trans           &trans           &trans           &trans           &trans           &trans     &trans   &trans   &trans   &trans
-&mo 3      &kp LEFT  &kp DOWN         &kp RIGHT        &trans           &trans           &kp LEFT         &kp UP           &kp DOWN         &kp RIGHT  &trans   &trans   &trans   &trans
+&trans     &kp LEFT  &kp DOWN         &kp RIGHT        &trans           &trans           &kp LEFT         &kp UP           &kp DOWN         &kp RIGHT  &trans   &trans   &trans   &trans
 &trans     &trans    &rgb_ug RGB_TOG  &rgb_ug RGB_BRI  &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &trans     &trans   &trans   &trans   &trans
 &trans     &trans    &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans
 &kp C_PP
@@ -76,22 +76,11 @@
 
         media_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp C_REWIND  &kp C_PLAY_PAUSE  &kp C_FAST_FORWARD  &kp C_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans            &trans              &trans      &trans             &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp C_REWIND  &kp C_PLAY_PAUSE  &kp C_FAST_FORWARD  &kp C_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans            &trans              &trans      &bt BT_SEL 0       &bt BT_SEL 1     &bt BT_CLR
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans            &trans              &trans      &trans             &trans           &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans            &trans              &trans      &trans             &trans           &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans            &trans
-&trans
-            >;
-        };
-
-        utility_layer {
-            bindings = <
-&bootloader  &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR
-&trans       &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans
             >;
         };
